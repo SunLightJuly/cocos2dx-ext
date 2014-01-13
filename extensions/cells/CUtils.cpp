@@ -309,7 +309,11 @@ std::string CUtils::filehash_md5str(FILE* fp, char* buf, size_t buf_size, double
 // directory access
 bool CUtils::access(const char* path, int mode)
 {
+#if defined(_WIN32)
 	return ::_access(path, mode) == 0;
+#else
+	return ::access(path, mode) == 0;
+#endif
 }
 
 // make directory
