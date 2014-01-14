@@ -448,7 +448,11 @@ unsigned int FontCatalog::char_height()
 
 bool FontCatalog::add_hackfont(const char* fontname, std::set<unsigned long>* charset, unsigned int shift_y /*= 0*/)
 {
+#ifndef WIN32
 	return add_hackfont(fontname, 0, charset, shift_y);
+#else
+	return false;
+#endif
 }
 
 bool FontCatalog::add_hackfont(const char* fontname, long face_idx, std::set<unsigned long>* charset, unsigned int shift_y)

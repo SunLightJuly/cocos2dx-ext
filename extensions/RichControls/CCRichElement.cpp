@@ -736,7 +736,15 @@ bool REleHTMLP::onCompositFinish(class IRichCompositor* compositor)
 
 bool REleHTMLBR::onCompositFinish(class IRichCompositor* compositor)
 {
-	m_rMetrics.rect.size.h = compositor->getFont()->char_height();
+	dfont::FontCatalog* f = compositor->getFont();
+	if (f)
+	{
+		m_rMetrics.rect.size.h = compositor->getFont()->char_height();
+	}
+	else
+	{
+		m_rMetrics.rect.size.h = 12;
+	}
 	m_rMetrics.rect.pos.y = m_rMetrics.rect.size.h;
 	return true;
 }
