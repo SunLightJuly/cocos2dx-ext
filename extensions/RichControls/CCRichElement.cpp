@@ -1862,7 +1862,8 @@ bool REleCCBNode::onParseAttributes(class IRichParser* parser, attrs_t* attrs )
 			{
 				m_sequence = (*attrs)["anim"];
 				if ( !m_sequence.empty() )
-					anim_manager->runAnimations(m_sequence.c_str());
+					//anim_manager->runAnimations(m_sequence.c_str());
+					anim_manager->runAnimationsForSequenceNamed(m_sequence.c_str());
 			}
 
 			return true;

@@ -151,7 +151,7 @@ void CCRichAtlas::updateAtlasValues()
 			quad.tr.vertices.y = ele_pos_top;
 			quad.tr.vertices.z = 0.0f;
 
-			ccColor4B c = { _displayedColor.r, _displayedColor.g, _displayedColor.b, _displayedOpacity };
+			ccColor4B c = { m_displayedColor.r, m_displayedColor.g, m_displayedColor.b, m_displayedOpacity };
 			quad.tl.colors = c;
 			quad.tr.colors = c;
 			quad.bl.colors = c;

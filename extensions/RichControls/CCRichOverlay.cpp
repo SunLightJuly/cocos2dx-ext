@@ -88,7 +88,7 @@ IRichNode* CCRichOverlay::getContainer()
 	return dynamic_cast<IRichNode*>(getParent());
 }
 
-bool CCRichOverlay::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
+int CCRichOverlay::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
 	// check is inside the rich node 
 	RRect rect = getContainer()->getCompositor()->getRect();
@@ -101,7 +101,7 @@ bool CCRichOverlay::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 
 	if ( !bbox.containsPoint(convertToNodeSpace(pTouch->getLocation())) )
 	{
-		return false;
+		return 0;
 	}
 
 	for( std::list<REleHTMLTouchable*>::iterator it = m_touchables.begin(); it != m_touchables.end(); it++ )
@@ -114,14 +114,14 @@ bool CCRichOverlay::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 		{
 			//CCLog("[Rich Touch Began] at: %.0f, %.0f", pt.x, pt.y);
 			m_touched = overlay;
-			return true;
+			return 1;
 		}
 	}
 
-	return false;
+	return 0;
 }
 
-void CCRichOverlay::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
+int CCRichOverlay::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
 	if ( m_touched && !m_eventhandlers.empty() )
 	{
@@ -137,7 +137,9 @@ void CCRichOverlay::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 		}
 
 		//m_touched->onTouchMoved(this, pTouch, pEvent);
-	}	
+	}
+
+	return 1;	
 }
 
 void CCRichOverlay::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)

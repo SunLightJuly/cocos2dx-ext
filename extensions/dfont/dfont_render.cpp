@@ -536,7 +536,7 @@ FontInfo* FontInfo::create_font(FT_Library library, const char* fontname, FT_Lon
 		}
 
 		delete f;
-		return false;
+		return NULL;
 	}
 
 	return NULL;
