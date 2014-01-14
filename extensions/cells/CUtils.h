@@ -27,7 +27,7 @@
 #define CUTILS_H_
 
 #include "CPlatform.h"
-#include "md5.h"
+#include "CCellmd5.h"
 #include "zpip.h"
 
 namespace cells
